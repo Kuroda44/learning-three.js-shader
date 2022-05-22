@@ -2,6 +2,9 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
+import vertShader from './shaders/sphere.vert'
+import fragShader from './shaders/sphere.frag'
+
 export default function Canvas() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -46,18 +49,8 @@ export default function Canvas() {
     const geometry = new THREE.SphereGeometry(15, 32, 16);
     const material = new THREE.ShaderMaterial({
       uniforms: uniforms,
-      vertexShader: `
-			void main() {
-        vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
-        vec4 mvPosition =  viewMatrix * worldPosition;
-        gl_Position = projectionMatrix * mvPosition;
-			}
-      `,
-      fragmentShader: `
-			void main() {
-				gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-			}
-      `,
+      vertexShader: vertShader,
+      fragmentShader: fragShader,
       side: THREE.BackSide
     });
 
