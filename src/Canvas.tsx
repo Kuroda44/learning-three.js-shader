@@ -38,12 +38,10 @@ export default function Canvas() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.5;
 
-    // 天球を作成
+    // 球を作成
+    let time = 0.0
     const uniforms = {
-      topColor: { value: new THREE.Color(0x0077ff) },
-      bottomColor: { value: new THREE.Color(0xffffff) },
-      offset: { value: 0 },
-      exponent: { value: 0.6 }
+      time: { value: time }
     };
 
     const geometry = new THREE.SphereGeometry(15, 32, 16);
@@ -59,6 +57,10 @@ export default function Canvas() {
 
     // アニメーション
     function tick() {
+      if(time === 1.0) time = 0.0
+      sphere.material.uniforms.time.value = time
+      time += 0.005
+
       // カメラコントローラーを更新
       controls.update();
 
