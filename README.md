@@ -1,2 +1,2 @@
-# learning-three.js-shader
+# learning-three-shader
 Created with CodeSandbox
