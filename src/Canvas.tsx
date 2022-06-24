@@ -59,7 +59,7 @@ export default function Canvas() {
     function tick() {
       if(time === 1.0) time = 0.0
       sphere.material.uniforms.time.value = time
-      time += 0.005
+      time += 0.01
 
       // カメラコントローラーを更新
       controls.update();
