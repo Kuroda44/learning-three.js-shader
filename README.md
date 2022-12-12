@@ -1,2 +1,2 @@
-# learning-three-shader
+# study-three-shader
 Created with CodeSandbox
